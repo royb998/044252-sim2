@@ -27,6 +27,21 @@ main:   # Load data from memory
 #   mul     <PROD>, <FACTOR1>, <FACTOR2>
 #   and     <PROD>, <PROD>, t0
 
+    andi    t1, t3, 0xff
+
+    mul     t2, t1, t4
+    and     t6, t2, t0
+
+    srli    t1, t3, 8
+    andi    t1, t1, 0xff
+
+    mul     t2, t1, t4
+    and     t2, t2, t0
+    slli    t2, t2, 8
+
+    add     t6, t6, t2
+
+
 # End of your code
 ####################
 
@@ -35,5 +50,3 @@ finish: addi    a0, x0, 1
     ecall # print integer ecall
     addi    a0, x0, 10
     ecall # terminate ecall
-
-
