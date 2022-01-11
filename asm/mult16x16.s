@@ -27,20 +27,26 @@ main:   # Load data from memory
 #   mul     <PROD>, <FACTOR1>, <FACTOR2>
 #   and     <PROD>, <PROD>, t0
 
+    # Lower byte of a
     andi    t1, t3, 0xff
 
+    # Multiply by b
     mul     t2, t1, t4
     and     t6, t2, t0
 
+    # Upper byte of a
     srli    t1, t3, 8
-    andi    t1, t1, 0xff
 
+    # Multiply by b
     mul     t2, t1, t4
     and     t2, t2, t0
+    # Shift to correct value
     slli    t2, t2, 8
 
+    # Combine intermediate products
     add     t6, t6, t2
 
+after_skip:
 
 # End of your code
 ####################
