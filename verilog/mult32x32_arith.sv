@@ -38,21 +38,18 @@ always_comb begin
 
     case (shift_sel)
         2'b00: add = temp_product;
-        2'b01: add = temp_product << 8;
-        2'b10: add = temp_product << 16;
-        2'b11: add = temp_product << 24;
+        2'b01: add = temp_product << 16;
+        2'b10: add = temp_product << 32;
+        default: add = 0;
     endcase // shift_sel
 end // always_comb
 
 always_ff @(posedge clk or posedge reset) begin
     if (reset == 1 || clr_prod == 1) begin
         product <= 64'b0;
-    end // if (reset == 1)
-
-    if (upd_prod == 1) begin
-        $display("Yay! %d %d", product, add);
+    end else if (upd_prod == 1) begin
         product <= product + add;
-    end // if (upd_prod == 1)
+    end
 end
 
 // End of your code
