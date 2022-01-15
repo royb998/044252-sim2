@@ -113,6 +113,7 @@ always_comb begin
             a_sel = 1'b0;
             b_sel = 1'b1;
             shift_sel = 2'b01;
+            upd_prod = 1'b1;
         end
 
         st3:begin
@@ -120,6 +121,7 @@ always_comb begin
             a_sel = 1'b1;
             b_sel = 1'b0;
             shift_sel = 2'b01;
+            upd_prod = 1'b1;
         end
 
         st4:begin
@@ -127,6 +129,7 @@ always_comb begin
             a_sel = 1'b0;
             b_sel = 1'b0;
             shift_sel = 2'b00;
+            upd_prod = 1'b1;
         end
         
     endcase
